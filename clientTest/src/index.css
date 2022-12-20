@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Roboto+Mono:wght@200;300;400;500;600&family=Staatliches&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  color: rgb(240, 240, 240);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* height: 100vh; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app {
+  color: white;
+  background: rgb(10, 10, 10);
+  background: rgb(20, 20, 20);
+  background: black;
+}
+
+.nav-link {
+  text-decoration: none;
+}
