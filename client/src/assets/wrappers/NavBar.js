@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.nav`
   .flex-center {
-    // color: white;
     letter-spacing: 0.08rem;
     font-size: 1.2rem;
     font-weight: bold;
@@ -30,7 +29,6 @@ const Wrapper = styled.nav`
 
   .nav-link {
     color: rgb(240, 240, 240);
-    text-decoration: none;
   }
 
   .nav-links {
@@ -51,9 +49,7 @@ const Wrapper = styled.nav`
   .promo {
     color: white;
     color: lightYellow;
-    // color: black;
     background: rgb(40, 40, 40);
-    // background: rgb(190, 190, 190);
     text-align: center;
     padding: 1rem;
     font-weight: bold;
@@ -61,10 +57,6 @@ const Wrapper = styled.nav`
   }
 
   .search-box {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, 50%);
     background: #2f3640;
     height: 15px;
     border-radius: 15px;

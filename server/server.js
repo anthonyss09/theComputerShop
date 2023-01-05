@@ -4,12 +4,14 @@ import dotenv from "dotenv";
 dotenv.config();
 import "express-async-errors";
 import connectDb from "./Db/connect.js";
+import authRouter from "./routes/authRouter.js";
 
 app.use(express.json());
 
 //middleware
 
 //routes
+app.use("/api/auth", authRouter);
 
 const port = process.env.PORT || 5000;
 

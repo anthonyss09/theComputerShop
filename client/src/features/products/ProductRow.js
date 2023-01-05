@@ -15,14 +15,14 @@ export default function PreviewRow({ products, title }) {
   });
   return (
     <Wrapper>
-      <seciton className="container-main">
+      <section className="container-main">
         <h3 className="row-title">{title}</h3>
         <section className="preview-row">{content}</section>
         <div className="plus-circle-container">
           View all {title}
           <BiPlusCircle size={30} className="plus-circle" />
         </div>
-      </seciton>
+      </section>
     </Wrapper>
   );
 }

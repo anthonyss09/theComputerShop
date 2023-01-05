@@ -28,6 +28,15 @@ const Wrapper = styled.section`
   .preview-section {
     margin: 2rem;
   }
+  .promo {
+    color: white;
+    color: lightYellow;
+    background: rgb(40, 40, 40);
+    text-align: center;
+    padding: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+  }
   .sub-section {
     display: flex;
     margin: 0 2rem;

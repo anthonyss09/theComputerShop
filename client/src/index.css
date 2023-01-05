@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Roboto+Mono:wght@200;300;400;500;600&family=Staatliches&display=swap");
 
+:root {
+  --mintGreen: rgb(170, 240, 209);
+  --200-black: rgb(200, 200, 200);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -21,6 +26,10 @@ code {
     monospace;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .app {
   color: white;
   background: rgb(10, 10, 10);
@@ -28,6 +37,29 @@ code {
   background: black;
 }
 
-.nav-link {
+.button {
+  height: 2.4rem;
+}
+
+.center {
+  display: grid;
+  place-items: center;
+}
+
+.link {
   text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.page-height {
+  min-height: 80vh;
+}
+
+.toast {
+  background: white;
+  color: blue;
+  z-index: 5;
 }
