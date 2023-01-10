@@ -1,6 +1,7 @@
 import Wrapper from "../assets/wrappers/Landing";
 import neonLaptop from "../assets/images/neonLaptop.jpg";
 import ProductRow from "../features/products/ProductRow";
+import BigSidebar from "../components/BigSidebar";
 import laptops from "../utils/previewLaptops";
 import desktops from "../utils/previewDesktops";
 import { NavLink } from "react-router-dom";
@@ -16,15 +17,16 @@ export default function Landing() {
 
   return (
     <Wrapper>
-      <div className="promo">Fast and free holiday shipping</div>
+      <div className="banner">Fast and free holiday shipping</div>
       <section className="main-image-section">
-        <div className="nav-links">
+        {/* <div className="nav-links">
           <NavLink className="link nav-link">Desktops</NavLink>
           <NavLink className="link nav-link">Laptops/Notebooks</NavLink>
           <NavLink className="link nav-link">Gaming</NavLink>
           <NavLink className="link nav-link">Devices</NavLink>
           <NavLink className="link nav-link">Accessories</NavLink>
-        </div>
+        </div> */}
+        <BigSidebar className="sidebar" />
         <div className="image-container">
           <img src={neonLaptop} alt="neon laptop" className="main-image" />
         </div>

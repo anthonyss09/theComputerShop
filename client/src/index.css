@@ -36,7 +36,15 @@ button:hover {
   background: rgb(20, 20, 20);
   background: black;
 }
-
+.banner {
+  color: white;
+  color: lightYellow;
+  background: rgb(40, 40, 40);
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.08rem;
+}
 .button {
   height: 2.4rem;
 }
@@ -57,7 +65,6 @@ button:hover {
 .page-height {
   min-height: 80vh;
 }
-
 .toast {
   background: white;
   color: blue;

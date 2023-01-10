@@ -10,33 +10,25 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
   }
-  .nav-link {
-    display: grid;
-    place-items: center;
-    background: rgb(20, 20, 20);
-    border: 2px solid rgb(20, 20, 20);
-    border: 2px solid black;
-    height: 100%;
-  }
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    // padding: 0 1rem 1rem 1rem;
-    display: none;
-  }
+  // .nav-link {
+  //   display: grid;
+  //   place-items: center;
+  //   background: rgb(20, 20, 20);
+  //   border: 2px solid rgb(20, 20, 20);
+  //   border: 2px solid black;
+  //   height: 100%;
+  // }
+  // .nav-links {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   // padding: 0 1rem 1rem 1rem;
+  //   display: none;
+  // }
   .preview-section {
     margin: 2rem;
   }
-  .promo {
-    color: white;
-    color: lightYellow;
-    background: rgb(40, 40, 40);
-    text-align: center;
-    padding: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.08rem;
-  }
+
   .sub-section {
     display: flex;
     margin: 0 2rem;
@@ -74,11 +66,11 @@ const Wrapper = styled.section`
     .main-image-section {
       justify-content: flex-start;
     }
-    .nav-links {
-      margin-top: 0.6rem;
-      display: flex;
-      width: 40%;
-    }
+    // .nav-links {
+    //   margin-top: 0.6rem;
+    //   display: flex;
+    //   width: 40%;
+    // }
   }
 `;
 

@@ -16,15 +16,27 @@ export default function RegisterPage({
         <FormRow
           name="firstName"
           id="first name"
+          type="text"
           onChange={handleFirstNameChange}
         />
         <FormRow
           name="lastName"
           id="last name"
+          type="text"
           onChange={handleLastNameChange}
         />
-        <FormRow name="email" onChange={handleEmailChange} />
-        <FormRow name="password" onChange={handlePasswordChange} />
+        <FormRow
+          name="email"
+          id="email"
+          type="text"
+          onChange={handleEmailChange}
+        />
+        <FormRow
+          name="password"
+          id="password"
+          type="text"
+          onChange={handlePasswordChange}
+        />
         <button className="button">Register</button>
         <span className="form-text">
           Aready a member?{" "}

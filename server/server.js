@@ -5,6 +5,8 @@ dotenv.config();
 import "express-async-errors";
 import connectDb from "./Db/connect.js";
 import authRouter from "./routes/authRouter.js";
+import productRouter from "./routes/productRouter.js";
+import upload from "./utils/fileUpload.js";
 
 app.use(express.json());
 
@@ -12,6 +14,7 @@ app.use(express.json());
 
 //routes
 app.use("/api/auth", authRouter);
+app.use("/api/products", upload.single("image"), productRouter);
 
 const port = process.env.PORT || 5000;
 

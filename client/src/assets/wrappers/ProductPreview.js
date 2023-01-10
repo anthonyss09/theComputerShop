@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.aside`
   img {
-    border-radius: 5%;
+    // border-radius: 5%;
   }
   .preview-card {
     width: 150px;

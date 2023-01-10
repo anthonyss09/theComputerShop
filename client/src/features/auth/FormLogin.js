@@ -13,9 +13,17 @@ export default function FormLogin({
     <Wrapper>
       <form className="form" onSubmit={handleLogin}>
         <h3 className="header">Login to your account</h3>
-        <FormRow name="email" value={email} onChange={handleEmailChange} />
         <FormRow
+          id="email"
+          name="email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+        />
+        <FormRow
+          id="password"
           name="password"
+          type="text"
           value={password}
           onChange={handlePasswordChange}
         />

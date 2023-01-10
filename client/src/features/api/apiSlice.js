@@ -3,7 +3,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
 
-  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "/api",
+    prepareHeaders: (headers, { getState }) => {
+      const user = getState().auth.user;
+      const isAdmin = user ? user.admin : 0;
+      headers.set("isAdmin", isAdmin);
+      return headers;
+    },
+  }),
 
   endpoints: (builder) => ({
     registerUser: builder.mutation({
