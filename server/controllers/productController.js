@@ -52,3 +52,13 @@ export const getProducts = async (req, res) => {
     }
   }
 };
+export const getProduct = async (req, res) => {
+  const param = req.url;
+  const productId = param.slice(1);
+  try {
+    const product = await Product.findOne({ _id: productId });
+    res.status(StatusCodes.OK).json(product);
+  } catch (error) {
+    console.log(error);
+  }
+};
