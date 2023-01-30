@@ -6,6 +6,7 @@ import {
   NotFoundError,
   UnauthenticatedError,
 } from "../Errors/index.js";
+import jwt from "jsonwebtoken";
 
 const registerUser = async (req, res) => {
   const { firstName, lastName, email, password, admin, userCart } = req.body;
@@ -60,4 +61,69 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser };
+// const fetchUserData = async (req, res) => {
+//   const authHeader = req.headers.authorization;
+//   if (!authHeader) {
+//     res.send("");
+//     return;
+//   }
+//   const token = authHeader.split(" ")[1];
+//   let userId;
+
+//   jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+//     if (err) {
+//       console.log(err);
+//       throw new BadRequestError("Invalid credentials");
+//     } else {
+//       userId = payload.userId;
+//     }
+//   });
+//   try {
+//     const userData = await User.findOne({ _id: userId });
+//     res.status(StatusCodes.OK).json(userData);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(StatusCodes.BAD_REQUEST).send(error);
+//   }
+// };
+
+const updateUser = async (req, res) => {
+  const { userId, update } = req.body;
+  const authHeader = req.headers.authorization;
+  const token = authHeader.split(" ")[1];
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+    if (err) {
+      console.log(err);
+      throw new BadRequestError("Invalid credentials");
+    }
+  });
+
+  try {
+    const user = await User.findOne({ _id: userId });
+
+    if (!user) {
+      throw new BadRequestError("User does not exist");
+    }
+
+    const newCart = user.userCart;
+    const cartModels = newCart.map((product) => {
+      return product.model;
+    });
+
+    if (cartModels.includes(update.model)) {
+      const targ = cartModels.indexOf(update.model);
+      newCart[targ].count++;
+    } else {
+      newCart.push(update);
+    }
+
+    await User.updateOne({ _id: userId }, { userCart: newCart });
+    const updatedUser = await User.findOne({ _id: userId });
+    res.status(StatusCodes.OK).json(updatedUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { registerUser, loginUser, updateUser };
