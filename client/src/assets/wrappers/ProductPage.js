@@ -15,13 +15,8 @@ const Wrapper = styled.section`
   }
   .product-previews {
     display: flex;
-    // justify-content: center;
-    // gap: 1rem;
     flex-wrap: wrap;
-    // padding: 1rem 2rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
-    // background: rgb(60, 60, 60);
+    margin: 0 2rem 2rem 2rem;
   }
   .sidebar {
     // margin-top: 3.2rem;

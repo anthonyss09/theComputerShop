@@ -7,6 +7,8 @@ import RegisterPage from "./features/auth/RegisterPage";
 import LoginPage from "./features/auth/LoginPage";
 import AddProductPage from "./features/products/AddProductPage";
 import ProductsPage from "./features/products/ProductsPage";
+import SingleProductPage from "./features/products/SingleProductPage";
+import CartView from "./features/cart/CartView";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             path="/products/:productType"
             element={<ProductsPage />}
           />
+          <Route exact path="/cart" element={<CartView />} />
+          <Route exact path="/:id" element={<SingleProductPage />} />
         </Routes>
         <Footer />
       </div>

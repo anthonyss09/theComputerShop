@@ -10,7 +10,7 @@ export default function AddProductPage() {
   const [type, setType] = useState("");
   const [image, setImage] = useState("");
 
-  const [addProduct] = useAddProductMutation();
+  const [addProduct, { refetch }] = useAddProductMutation();
 
   const handleModelChange = (e) => {
     setModel(e.target.value);

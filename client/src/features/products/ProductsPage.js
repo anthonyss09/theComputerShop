@@ -8,7 +8,6 @@ import BigSidebar from "../../components/BigSidebar";
 export default function ProductsPage() {
   const { productType } = useParams();
   const { data: products = [], isLoading } = useGetProductsQuery(productType);
-  console.log(products);
 
   let pageTitle = productType;
   if (productType === "all-products") {
@@ -29,14 +28,16 @@ export default function ProductsPage() {
   } else {
     content = products.map((product, index) => {
       return (
-        <div className="single-preview-container">
+        <div key={index} className="single-preview-container">
           {" "}
           <div className="single-preview">
             <ProductPreview
               key={index}
               image={urlPre + product.image}
               model={product.model}
+              manufactuer={product.manufactuer}
               price={product.price}
+              productId={product._id}
             />
           </div>
         </div>

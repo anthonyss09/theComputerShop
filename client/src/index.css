@@ -25,13 +25,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-button:hover {
-  cursor: pointer;
-}
-
 .app {
-  color: white;
+  /* color: white; */
   background: rgb(10, 10, 10);
   background: rgb(20, 20, 20);
   background: black;
@@ -47,6 +42,11 @@ button:hover {
 }
 .button {
   height: 2.4rem;
+  border: none;
+  box-shadow: none;
+}
+.button:hover {
+  cursor: pointer;
 }
 
 .center {

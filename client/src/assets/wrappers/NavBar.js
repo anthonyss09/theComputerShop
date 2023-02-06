@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
-  .icon-bars:hover {
+  .drop-item:hover {
     cursor: pointer;
+  }
+  .drop-menu {
+    position: absolute;
+    top: 3.6rem;
   }
   .flex-center {
     letter-spacing: 0.08rem;
@@ -21,6 +25,9 @@ const Wrapper = styled.nav`
   }
   .icon {
     color: white;
+  }
+  .icon:hover {
+    cursor: pointer;
   }
   .nav-bar {
     background: rgb(20, 20, 20);

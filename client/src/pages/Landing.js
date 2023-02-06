@@ -4,15 +4,16 @@ import ProductRow from "../features/products/ProductRow";
 import BigSidebar from "../components/BigSidebar";
 import laptops from "../utils/previewLaptops";
 import desktops from "../utils/previewDesktops";
-import { NavLink } from "react-router-dom";
 import psController from "../assets/images/psController.jpg";
 import { selectCurrentUser } from "../features/auth/authSlice";
 import { useSelector } from "react-redux";
+// import { useFetchUserDataQuery } from "../features/api/apiSlice";
 
 export default function Landing() {
   const user = useSelector(selectCurrentUser);
+  // const { data: currentUser } = useFetchUserDataQuery();
   if (user) {
-    console.log(user);
+    console.log("there is a user among us");
   }
 
   return (

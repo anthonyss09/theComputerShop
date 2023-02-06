@@ -7,12 +7,16 @@ export const apiSlice = createApi({
     baseUrl: "/api",
     prepareHeaders: (headers, { getState }) => {
       const user = getState().auth.user;
+      const token = getState().auth.token;
+      if (token) {
+        headers.set("authorization", `bearer ${token}`);
+      }
       const isAdmin = user ? user.admin : 0;
       headers.set("isAdmin", isAdmin);
       return headers;
     },
   }),
-
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: ({ firstName, lastName, email, password }) => ({
@@ -28,7 +32,26 @@ export const apiSlice = createApi({
         body: { email, password },
       }),
     }),
+    // fetchUserData: builder.query({
+    //   query: () => ({
+    //     url: "/auth/fetch-user-data",
+    //     method: "GET",
+    //   }),
+    //   providesTags: ["User"],
+    // }),
+    updateUserCart: builder.mutation({
+      query: ({ userId, update }) => ({
+        url: "/auth/update-user",
+        method: "POST",
+        body: { userId, update },
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { useLoginUserMutation, useRegisterUserMutation } = apiSlice;
+export const {
+  useLoginUserMutation,
+  useRegisterUserMutation,
+  useUpdateUserCartMutation,
+} = apiSlice;

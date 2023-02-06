@@ -4,13 +4,47 @@ import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCurrentUser, logoutUser } from "../features/auth/authSlice";
+import { clearCart } from "../features/cart/cartSlice";
 
 export default function NavBar() {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showLoginOut, setShowLoginOut] = useState(false);
+  const user = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setShowSidebar(!showSidebar);
   };
+  const handleUserClick = () => {
+    setShowLoginOut(!showLoginOut);
+  };
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    dispatch(clearCart());
+  };
+
+  let content;
+  if (user) {
+    content = (
+      <div
+        className="drop-item"
+        onClick={() => {
+          handleLogout();
+          handleUserClick();
+        }}
+      >
+        Logout
+      </div>
+    );
+  } else {
+    content = (
+      <Link className="link" to="/register" onClick={handleUserClick}>
+        Register
+      </Link>
+    );
+  }
   return (
     <Wrapper>
       {showSidebar && <Sidebar handleClick={handleClick} />}
@@ -39,11 +73,16 @@ export default function NavBar() {
             Computer Shop
           </Link>
           <div className="flex-right">
-            <Link to="/register">
-              <FaUserAlt className="icon icon-user" size={25} />
+            <FaUserAlt
+              className="icon icon-user"
+              size={25}
+              onClick={handleUserClick}
+            />
+            {showLoginOut && <div className="drop-menu">{content}</div>}
+            <Link to="/cart">
+              {" "}
+              <BiShoppingBag className=" icon icon-shopping-bag" size={25} />
             </Link>
-
-            <BiShoppingBag className=" icon icon-shopping-bag" size={25} />
           </div>
         </div>
       </nav>

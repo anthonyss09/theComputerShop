@@ -13,6 +13,9 @@ export default function Sidebar({ handleClick }) {
     <Wrapper>
       <section className="sidebar-container">
         <CloseButton className="close-button" onClick={handleClick} />
+        <NavLink to="/" className="link nav-link" onClick={handleClick}>
+          Home
+        </NavLink>
         <NavLink
           to="/products/desktops"
           className="link nav-link top-link"

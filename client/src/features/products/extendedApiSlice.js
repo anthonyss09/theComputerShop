@@ -8,6 +8,12 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getProduct: builder.query({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "GET",
+      }),
+    }),
     addProduct: builder.mutation({
       query: (newProduct) => ({
         url: "/products/add-product",
@@ -18,4 +24,8 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddProductMutation, useGetProductsQuery } = extendedApiSlice;
+export const {
+  useAddProductMutation,
+  useGetProductsQuery,
+  useGetProductQuery,
+} = extendedApiSlice;
