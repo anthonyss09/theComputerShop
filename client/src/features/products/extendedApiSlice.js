@@ -28,4 +28,5 @@ export const {
   useAddProductMutation,
   useGetProductsQuery,
   useGetProductQuery,
+  useGetStripeSecretMutation,
 } = extendedApiSlice;

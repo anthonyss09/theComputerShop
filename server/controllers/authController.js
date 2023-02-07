@@ -7,6 +7,10 @@ import {
   UnauthenticatedError,
 } from "../Errors/index.js";
 import jwt from "jsonwebtoken";
+import Stripe from "stripe";
+const stripe = new Stripe(
+  "sk_test_51LuIXnA3543f5hOkxXS8ewm1AlEMJzEqt4MHBGrV3je1IfiFwiixpp94FqHW5SHOatZri2sboL9JFk6AamlBTw7H00cX6LsqY8"
+);
 
 const registerUser = async (req, res) => {
   const { firstName, lastName, email, password, admin, userCart } = req.body;
@@ -125,5 +129,21 @@ const updateUser = async (req, res) => {
     console.log(error);
   }
 };
+const getStripeSecret = async (req, res) => {
+  const { cartTotal } = req.body;
+  const total = cartTotal * 100;
 
-export { registerUser, loginUser, updateUser };
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: total,
+      currency: "usd",
+      automatic_payment_methods: { enabled: true },
+    });
+    console.log(paymentIntent.client_secret);
+    res.json({ client_secret: paymentIntent.client_secret });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { registerUser, loginUser, updateUser, getStripeSecret };

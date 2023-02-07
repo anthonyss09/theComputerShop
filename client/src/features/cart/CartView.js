@@ -6,12 +6,19 @@ import {
   selectCartTax,
 } from "./cartSlice";
 import CartItemPreview from "./CartItemPreview";
+import { useGetStripeSecretMutation } from "../products/extendedApiSlice";
 
 export default function CartView() {
   const cartTax = useSelector(selectCartTax);
   const cartItems = useSelector(selectAllCartItems);
   const cartSubtotal = useSelector(selectCartSubTotal);
   const cartTotal = (Number(cartTax) + Number(cartSubtotal)).toFixed(2);
+
+  const [getStripeSecret] = useGetStripeSecretMutation();
+
+  const handleCheckout = () => {
+    getStripeSecret({ cartTotal });
+  };
 
   const previewItems = cartItems.map((item, index) => {
     return (
@@ -36,7 +43,9 @@ export default function CartView() {
           <p className="tax">Tax: {cartTax}</p>
           <p className="total">Total: {cartTotal}</p>
         </div>
-        <button className="button">Check out</button>
+        <button className="button" onClick={handleCheckout}>
+          Check out
+        </button>
       </section>
     );
   } else

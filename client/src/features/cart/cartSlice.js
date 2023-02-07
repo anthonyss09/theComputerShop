@@ -56,6 +56,7 @@ export const cartSlice = createSlice({
       }
       state.cartCount--;
       state.cartSubTotal -= action.payload.price;
+      state.cartTax = (state.cartSubTotal * 0.865).toFixed(2);
       localStorage.setItem(
         "localCart",
         JSON.stringify(Object.values(state.entities))

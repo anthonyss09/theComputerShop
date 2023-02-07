@@ -5,7 +5,7 @@ import {
   NotFoundError,
   UnauthenticatedError,
 } from "../Errors/index.js";
-import url from "url";
+// import url from "url";
 
 export const createProduct = async (req, res) => {
   const { model, manufactuer, price, type, imageName } = req.body;

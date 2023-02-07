@@ -5,7 +5,7 @@ let normCart = {};
 let ids = [];
 let cartCount = 0;
 let cartSubTotal = 0;
-console.log(localCart);
+
 if (localCart) {
   normCart = normalizeArray(localCart);
   ids = getIds(localCart);

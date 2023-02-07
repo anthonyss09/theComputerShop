@@ -47,6 +47,13 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+    getStripeSecret: builder.mutation({
+      query: (total) => ({
+        url: "/auth/v1/stripe-secret",
+        method: "POST",
+        body: total,
+      }),
+    }),
   }),
 });
 

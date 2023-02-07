@@ -9,6 +9,8 @@ import AddProductPage from "./features/products/AddProductPage";
 import ProductsPage from "./features/products/ProductsPage";
 import SingleProductPage from "./features/products/SingleProductPage";
 import CartView from "./features/cart/CartView";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrderStatus from "./pages/OrderStatus";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           />
           <Route exact path="/cart" element={<CartView />} />
           <Route exact path="/:id" element={<SingleProductPage />} />
+          <Route exact path="/checkout" element={<CheckoutPage />} />
+          <Route exact path="/order/order-status" element={<CheckoutPage />} />
         </Routes>
         <Footer />
       </div>

@@ -70,3 +70,13 @@ code {
   color: blue;
   z-index: 5;
 }
+
+.stripe-button {
+  background: var(--mintGreen);
+  color: black;
+  font-weight: bold;
+  margin-top: 1.8rem;
+  width: 100%;
+  height: 2.6rem;
+  border-radius: 4%;
+}
