@@ -62,3 +62,28 @@ export const getProduct = async (req, res) => {
     console.log(error);
   }
 };
+export const searchProducts = async (req, res) => {
+  const { searchQuery } = req.query;
+  if (searchQuery === "") {
+    console.log("no query");
+    res.status(StatusCodes.OK).send([]);
+    return;
+  }
+
+  const queryModels = {
+    model: { $regex: searchQuery, $options: "i" },
+  };
+  const queryManufactuers = {
+    manufactuer: { $regex: searchQuery, $options: "i" },
+  };
+
+  try {
+    const modelMatches = await Product.find(queryModels);
+    const manufactuerMatches = await Product.find(queryManufactuers);
+    const productMatches = modelMatches.concat(manufactuerMatches);
+    console.log(productMatches);
+    res.status(StatusCodes.OK).send(productMatches);
+  } catch (error) {
+    console.log(error);
+  }
+};

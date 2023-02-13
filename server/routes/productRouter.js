@@ -4,6 +4,7 @@ import {
   createProduct,
   getProduct,
   getProducts,
+  searchProducts,
 } from "../controllers/productController.js";
 
 router.route("/add-product").post(createProduct);
@@ -13,6 +14,7 @@ router.route("/all-products").get(getProducts);
 router.route("/gaming").get(getProducts);
 router.route("/devices").get(getProducts);
 router.route("/accessories").get(getProducts);
+router.route("/search").get(searchProducts);
 router.route("/:id").get(getProduct);
 
 export default router;

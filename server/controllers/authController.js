@@ -130,6 +130,7 @@ const updateUser = async (req, res) => {
   }
 };
 const getStripeSecret = async (req, res) => {
+  //add authentication security measure, check headers
   const { cartTotal } = req.body;
   const total = cartTotal * 100;
 
@@ -139,7 +140,6 @@ const getStripeSecret = async (req, res) => {
       currency: "usd",
       automatic_payment_methods: { enabled: true },
     });
-    console.log(paymentIntent.client_secret);
     res.json({ client_secret: paymentIntent.client_secret });
   } catch (error) {
     console.log(error);
