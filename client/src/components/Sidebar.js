@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 export default function Sidebar({ handleClick }) {
   const user = useSelector(selectCurrentUser);
-  // const isAdmin = user.admin;
-  const isAdmin = true;
+  const isAdmin = user ? user.admin : false;
 
   return (
     <Wrapper>

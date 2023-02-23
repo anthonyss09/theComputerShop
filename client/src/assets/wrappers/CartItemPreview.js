@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 const Wrapper = styled.aside`
+  .counts {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  .icon:hover {
+    cursor: pointer;
+  }
   .preview-card {
     width: 90vw;
     max-width: 600px;

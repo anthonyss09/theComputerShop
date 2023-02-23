@@ -40,10 +40,10 @@ export const apiSlice = createApi({
     //   providesTags: ["User"],
     // }),
     updateUserCart: builder.mutation({
-      query: ({ userId, update }) => ({
+      query: ({ userId, update, add }) => ({
         url: "/auth/update-user",
         method: "POST",
-        body: { userId, update },
+        body: { userId, update, add },
       }),
       invalidatesTags: ["User"],
     }),

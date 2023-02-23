@@ -21,6 +21,13 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         body: newProduct,
       }),
     }),
+    searchProducts: builder.query({
+      query: (searchQuery) => ({
+        url: `/products/search`,
+        method: "GET",
+        params: { searchQuery: searchQuery },
+      }),
+    }),
   }),
 });
 
@@ -29,4 +36,5 @@ export const {
   useGetProductsQuery,
   useGetProductQuery,
   useGetStripeSecretMutation,
+  useSearchProductsQuery,
 } = extendedApiSlice;

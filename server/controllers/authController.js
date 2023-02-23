@@ -32,8 +32,9 @@ const registerUser = async (req, res) => {
       admin,
       userCart,
     });
+    user.password = undefined;
     const token = user.createJWT();
-    res.status(StatusCodes.CREATED).json({ user, token });
+    res.status(StatusCodes.OK).json({ user, token });
   } catch (error) {
     console.log(error);
     res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
@@ -92,7 +93,7 @@ const loginUser = async (req, res) => {
 // };
 
 const updateUser = async (req, res) => {
-  const { userId, update } = req.body;
+  const { userId, update, add } = req.body;
   const authHeader = req.headers.authorization;
   const token = authHeader.split(" ")[1];
 
@@ -115,11 +116,19 @@ const updateUser = async (req, res) => {
       return product.model;
     });
 
-    if (cartModels.includes(update.model)) {
-      const targ = cartModels.indexOf(update.model);
-      newCart[targ].count++;
+    if (add) {
+      if (cartModels.includes(update.model)) {
+        const targ = cartModels.indexOf(update.model);
+        newCart[targ].count++;
+      } else {
+        newCart.push(update);
+      }
     } else {
-      newCart.push(update);
+      const targ = cartModels.indexOf(update.model);
+      newCart[targ].count--;
+      if (newCart[targ].count === 0) {
+        newCart.splice(targ, 1);
+      }
     }
 
     await User.updateOne({ _id: userId }, { userCart: newCart });

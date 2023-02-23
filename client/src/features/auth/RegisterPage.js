@@ -32,7 +32,18 @@ export default function RegisterPage() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await registerUser({ firstName, lastName, email, password });
+      const response = await registerUser({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem(
+        "localCart",
+        JSON.stringify(response.data.user.userCart)
+      );
       navigate("/");
     } catch (error) {
       console.log(error);

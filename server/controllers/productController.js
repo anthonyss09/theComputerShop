@@ -65,7 +65,6 @@ export const getProduct = async (req, res) => {
 export const searchProducts = async (req, res) => {
   const { searchQuery } = req.query;
   if (searchQuery === "") {
-    console.log("no query");
     res.status(StatusCodes.OK).send([]);
     return;
   }
@@ -81,7 +80,6 @@ export const searchProducts = async (req, res) => {
     const modelMatches = await Product.find(queryModels);
     const manufactuerMatches = await Product.find(queryManufactuers);
     const productMatches = modelMatches.concat(manufactuerMatches);
-    console.log(productMatches);
     res.status(StatusCodes.OK).send(productMatches);
   } catch (error) {
     console.log(error);

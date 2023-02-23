@@ -16,13 +16,29 @@ export default function SingleProductPage() {
   const dispatch = useDispatch();
   const urlPre = "../../data/uploads/";
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (user) {
       const userId = user._id;
       const update = product;
-      updateUserCart({ userId, update });
+      const response = await updateUserCart({ userId, update, add: 1 });
+      localStorage.setItem("user", JSON.stringify(response.data));
     }
     dispatch(addItemToCart(product));
+    const currentCart = JSON.parse(localStorage.getItem("localCart")) || [];
+    let push = true;
+    currentCart.map((prod, index) => {
+      if (prod.model === product.model) {
+        const newProduct = prod;
+        newProduct.count += 1;
+        currentCart.splice(index, 1, newProduct);
+        push = false;
+      }
+    });
+    if (push) {
+      currentCart.push(product);
+    }
+
+    localStorage.setItem("localCart", JSON.stringify(currentCart));
   };
 
   let content;

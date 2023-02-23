@@ -49,5 +49,5 @@ export default function OrderStatus() {
     });
   }, [stripe]);
 
-  return <section className="page-height">{message}</section>;
+  return <section className="page-height center">{message}</section>;
 }

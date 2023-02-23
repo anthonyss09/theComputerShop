@@ -20,7 +20,7 @@ const Wrapper = styled.aside`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    z-index: 3;
+    z-index: 8;
   }
 `;
 

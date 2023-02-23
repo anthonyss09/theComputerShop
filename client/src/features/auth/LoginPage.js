@@ -22,17 +22,24 @@ export default function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const user = await login({ email, password });
+      const response = await login({ email, password });
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      localStorage.setItem(
+        "localCart",
+        JSON.stringify(response.data.user.userCart)
+      );
       navigate("/");
     } catch (error) {
-      toast({
-        position: "top-right",
-        title: "error",
-        description: "error",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
+      console.log(error);
+      // toast({
+      //   position: "top-right",
+      //   title: "error",
+      //   description: "error",
+      //   status: "error",
+      //   duration: 9000,
+      //   isClosable: true,
+      // });
     }
   };
   let content;

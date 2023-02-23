@@ -12,8 +12,8 @@ if (localCart) {
   cartCount =
     localCart.length > 0
       ? localCart.reduce((a, b) => {
-          return a.count + b.count;
-        })
+          return a + b.count;
+        }, 0)
       : 0;
   cartSubTotal = localCart.reduce((a, b) => {
     return a + b.count * b.price;

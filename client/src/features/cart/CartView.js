@@ -29,6 +29,7 @@ export default function CartView() {
         price={item.price}
         count={item.count}
         image={item.image}
+        id={item._id}
       />
     );
   });

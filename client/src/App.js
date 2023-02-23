@@ -10,7 +10,6 @@ import ProductsPage from "./features/products/ProductsPage";
 import SingleProductPage from "./features/products/SingleProductPage";
 import CartView from "./features/cart/CartView";
 import CheckoutPage from "./pages/CheckoutPage";
-import OrderStatus from "./pages/OrderStatus";
 
 function App() {
   return (

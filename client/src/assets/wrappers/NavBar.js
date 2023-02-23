@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
+  .cart-count {
+    position: absolute;
+    font-size: 0.4rem;
+    font-weight: bold;
+    padding: 0.2rem;
+    background: lightBlue;
+    border-radius: 50%;
+    z-index: 1;
+    top: 0.9rem;
+    right: 0.8rem;
+    color: black;
+  }
   .drop-item:hover {
     cursor: pointer;
   }
@@ -25,6 +37,10 @@ const Wrapper = styled.nav`
   }
   .icon {
     color: white;
+  }
+  .icon-shopping-bag {
+    position: relative;
+    z-index: 6;
   }
   .icon:hover {
     cursor: pointer;

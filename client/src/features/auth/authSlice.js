@@ -18,9 +18,6 @@ export const authSlice = createSlice({
     logoutUser(state, action) {
       state.user = "";
       state.token = "";
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
-      localStorage.removeItem("localCart");
     },
   },
   extraReducers: (builder) => {
@@ -29,9 +26,6 @@ export const authSlice = createSlice({
       (state, { payload }) => {
         state.token = payload.token;
         state.user = payload.user;
-        localStorage.setItem("user", JSON.stringify(payload.user));
-        localStorage.setItem("token", JSON.stringify(payload.token));
-        localStorage.setItem("localCart".JSON.stringigy(payload.user.userCart));
       }
     );
     builder.addMatcher(
@@ -39,19 +33,12 @@ export const authSlice = createSlice({
       (state, { payload }) => {
         state.token = payload.token;
         state.user = payload.user;
-        localStorage.setItem("user", JSON.stringify(payload.user));
-        localStorage.setItem("token", JSON.stringify(payload.token));
-        localStorage.setItem(
-          "localCart",
-          JSON.stringify(payload.user.userCart)
-        );
       }
     );
     builder.addMatcher(
       apiSlice.endpoints.updateUserCart.matchFulfilled,
       (state, { payload }) => {
         state.user = payload;
-        localStorage.setItem("user", JSON.stringify(payload));
       }
     );
     builder.addMatcher(
