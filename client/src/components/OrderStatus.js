@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { useStripe } from "@stripe/react-stripe-js";
+import { useDispatch } from "react-redux";
+import { clearClientSecret } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderStatus() {
   const stripe = useStripe();
   const [message, setMessage] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!stripe) {
@@ -25,6 +30,9 @@ export default function OrderStatus() {
       // confirmation, while others will first enter a `processing` state.
       //
       // [0]: https://stripe.com/docs/payments/payment-methods#payment-notification
+      dispatch(clearClientSecret);
+      localStorage.removeItem("client_secret");
+      localStorage.removeItem("localCart");
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Success! Payment received.");

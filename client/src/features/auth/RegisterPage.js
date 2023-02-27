@@ -3,10 +3,16 @@ import { useState } from "react";
 import { useRegisterUserMutation } from "../api/apiSlice";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import Alert from "../alerts/Alert";
+import { clearAlert, selectAlertsInfo } from "../alerts/alertsSlice";
 
 export default function RegisterPage() {
   const [registerUser, { isLoading }] = useRegisterUserMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { showAlert, alertMessage, alertType } = useSelector(selectAlertsInfo);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,9 +50,14 @@ export default function RegisterPage() {
         "localCart",
         JSON.stringify(response.data.user.userCart)
       );
-      navigate("/");
+      setTimeout(() => {
+        dispatch(clearAlert());
+        navigate("/");
+      }, 3000);
     } catch (error) {
-      console.log(error);
+      setTimeout(() => {
+        dispatch(clearAlert());
+      }, 3000);
     }
   };
 
@@ -64,5 +75,10 @@ export default function RegisterPage() {
       />
     );
   }
-  return <section className="center page-height">{content}</section>;
+  return (
+    <section className="center page-height">
+      {showAlert && <Alert alertType={alertType} alertMessage={alertMessage} />}
+      {content}
+    </section>
+  );
 }

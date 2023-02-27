@@ -19,6 +19,9 @@ export const authSlice = createSlice({
       state.user = "";
       state.token = "";
     },
+    clearClientSecret(state, action) {
+      state.client_secret = "";
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -44,27 +47,14 @@ export const authSlice = createSlice({
     builder.addMatcher(
       apiSlice.endpoints.getStripeSecret.matchFulfilled,
       (state, { payload }) => {
-        localStorage.setItem(
-          "client_secret",
-          JSON.stringify(payload.client_secret)
-        );
         state.client_secret = payload.client_secret;
         window.location.href = "/checkout";
       }
     );
-    // builder.addMatcher(
-    //   apiSlice.endpoints.fetchUserData.matchFulfilled,
-    //   (state, { payload }) => {
-    //     console.log(payload);
-    //     state.user = payload;
-    //     localStorage.setItem("user", JSON.stringify(payload));
-    //     // localStorage.setItem("token", JSON.stringify(payload.token));
-    //   }
-    // );
   },
 });
 
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectClientSecret = (state) => state.auth.client_secret;
-export const { logoutUser } = authSlice.actions;
+export const { logoutUser, clearClientSecret } = authSlice.actions;
 export default authSlice.reducer;

@@ -20,8 +20,19 @@ const getCartTotal = (obArray) => {
   }, 0);
 };
 
-const calcTax = (subTotal) => {
-  return (subTotal * 0.865).toFixed(2);
+const getCartCount = (obArray) => {
+  if (obArray.length > 0) {
+    const newArr = obArray.reduce((a, b) => {
+      return a + b.count;
+    }, 0);
+    return newArr;
+  } else {
+    return 0;
+  }
 };
 
-export { getIds, normalizeArray, getCartTotal, calcTax };
+const calcTax = (subTotal) => {
+  return (subTotal * 0.0865).toFixed(2);
+};
+
+export { getIds, normalizeArray, getCartTotal, getCartCount, calcTax };

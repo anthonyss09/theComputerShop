@@ -16,16 +16,27 @@ export default function CheckoutPage() {
     clientSecret: CLIENT_SECRET,
   };
   let content;
-  if (window.location.href === "http://localhost:3000/checkout") {
-    content = <ChekcoutForm />;
+  if (!CLIENT_SECRET) {
+    content = <div>This page has expired</div>;
+  } else if (window.location.href === "http://localhost:3000/checkout") {
+    content = (
+      <Elements stripe={stripePromise} options={options}>
+        <ChekcoutForm />
+      </Elements>
+    );
   } else {
-    content = <OrderStatus />;
+    content = (
+      <Elements stripe={stripePromise} options={options}>
+        <OrderStatus />
+      </Elements>
+    );
   }
   return (
     <section className="page-height center">
-      <Elements stripe={stripePromise} options={options}>
+      {/* <Elements stripe={stripePromise} options={options}>
         {content}
-      </Elements>
+      </Elements> */}
+      {content}
     </section>
   );
 }

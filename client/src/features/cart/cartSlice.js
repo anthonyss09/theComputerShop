@@ -6,6 +6,7 @@ import {
   normalizeArray,
   getCartTotal,
   calcTax,
+  getCartCount,
 } from "../../utils/helpers";
 
 const cartAdapter = createEntityAdapter({
@@ -17,7 +18,7 @@ const initialState = cartAdapter.getInitialState({
   entities: normCart,
   cartCount: cartCount,
   cartSubTotal: cartSubTotal,
-  cartTax: (cartSubTotal * 0.865).toFixed(2),
+  cartTax: (cartSubTotal * 0.0865).toFixed(2),
 });
 
 export const cartSlice = createSlice({
@@ -35,7 +36,7 @@ export const cartSlice = createSlice({
       state.cartSubTotal = (
         Number(state.cartSubTotal) + action.payload.price
       ).toFixed(2);
-      state.cartTax = (state.cartSubTotal * 0.865).toFixed(2);
+      state.cartTax = (state.cartSubTotal * 0.0865).toFixed(2);
     },
     removeItemFromCart(state, action) {
       const productId = action.payload._id;
@@ -51,7 +52,7 @@ export const cartSlice = createSlice({
       state.cartSubTotal = (
         Number(state.cartSubTotal) - action.payload.price
       ).toFixed(2);
-      state.cartTax = (state.cartSubTotal * 0.865).toFixed(2);
+      state.cartTax = (state.cartSubTotal * 0.0865).toFixed(2);
     },
     clearCart(state, action) {
       state.ids = [];
@@ -82,7 +83,7 @@ export const cartSlice = createSlice({
         state.entities = normCart;
         state.cartSubTotal = getCartTotal(userCart).toFixed(2);
         state.cartTax = calcTax(getCartTotal(userCart));
-        state.cartCount = cartCount;
+        state.cartCount = getCartCount(userCart);
       }
     );
   },

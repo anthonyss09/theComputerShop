@@ -17,7 +17,6 @@ export default function ChekcoutForm() {
     if (!stripe || !elements) {
       return;
     }
-
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {

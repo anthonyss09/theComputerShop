@@ -9,6 +9,7 @@ import { selectCurrentUser, logoutUser } from "../features/auth/authSlice";
 import { clearCart, selectCartCount } from "../features/cart/cartSlice";
 import { useSearchProductsQuery } from "../features/products/extendedApiSlice";
 import SearchMatches from "../features/products/SearchMatches";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -28,6 +29,7 @@ export default function NavBar() {
   // console.log(counts);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setShowSidebar(!showSidebar);
@@ -41,6 +43,7 @@ export default function NavBar() {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     localStorage.removeItem("localCart");
+    navigate("/");
   };
   const handleSearch = async (e) => {
     const searchQuery = e.target.value;
