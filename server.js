@@ -25,8 +25,6 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-//middleware
-
 //routes
 app.use("/api/auth", authRouter);
 app.use("/api/products", upload.single("image"), productRouter);
