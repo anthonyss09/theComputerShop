@@ -43,9 +43,9 @@ If no errors are caught the stack moves to dispatch `addItemToCart`, this update
 
 ## payments
 
-Currently this app accepts payments in a rudementary test of stripe. In /controllers/productController.js `createCheckoutSession` creates a stripe check out session. The controller function accepts a total and uses the stripe api to create a product, price and session.
+Currently this app accepts payments in a rudementary test of stripe. Stripe documentation for custom payment flow link below.
 
-[stripe](https://stripe.com/payments/checkout)
+[stripe](https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=elements)
 
 # installation
 
