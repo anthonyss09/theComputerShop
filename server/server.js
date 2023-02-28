@@ -10,6 +10,15 @@ import upload from "./utils/fileUpload.js";
 
 app.use(express.json());
 
+// Accessing the path module
+const path = require("path");
+// import client build
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// redirect requests to index.html
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
 //middleware
 
 //routes
