@@ -29,7 +29,7 @@ app.get("*", function (request, response) {
 app.use("/api/auth", authRouter);
 app.use("/api/products", upload.single("image"), productRouter);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("Welcome to the computer shop.");
