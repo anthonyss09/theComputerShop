@@ -36,10 +36,10 @@ Alert data is stored in the alertsSlice branch of state. When actions such as re
 
 ## shopping cart
 
-![cartView](/client/src/assets/images/cartView.png)
-
 When an action is taken to add an item to cart `handleAddToCart` function checks if a user is currently logged in. If a user is logged in user is updated with new item in userCart upon triggering `useUpdateUserCartMutation`, this is also where any errors from the call to mutate external data are caught and displayed.
 If no errors are caught the stack moves to dispatch `addItemToCart`, this updates the cart branch of state with new data. `displayAlert` is then dispatched and localCart is reset on local storage to persist data for non registered users otherwise data from user is defined in `/client/src/utils/cartInfo.js` and preloaded into cartSlice's initial state.
+
+![cartView](/client/src/assets/images/cartView.png)
 
 ## payments
 
