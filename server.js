@@ -7,6 +7,7 @@ import connectDb from "./Db/connect.js";
 import authRouter from "./routes/authRouter.js";
 import productRouter from "./routes/productRouter.js";
 import upload from "./utils/fileUpload.js";
+//gile
 
 app.use(express.json());
 
