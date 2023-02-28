@@ -10,9 +10,12 @@ export default function PreviewCard({
 }) {
   return (
     <Wrapper>
-      <Link to={"/" + productId} className="preview-card link">
+      <Link
+        to={"/products/single-product/" + productId}
+        className="preview-card link"
+      >
         <section className="preview-image-container">
-          <img src={image} className="preview-image" />
+          <img src={image} className="preview-image" alt="computer product" />
         </section>
         <section className="preview-body">
           <div className="preview-text">{manufactuer + " " + model}</div>

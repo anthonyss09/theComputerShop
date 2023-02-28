@@ -74,14 +74,14 @@ const updateUser = async (req, res) => {
   const authHeader = req.headers.authorization;
   const token = authHeader.split(" ")[1];
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
-    if (err) {
-      console.log(err);
-      throw new BadRequestError("Invalid credentials");
-    }
-  });
-
   try {
+    jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+      if (err) {
+        console.log(err);
+        throw new BadRequestError("Invalid credentials");
+      }
+    });
+
     const user = await User.findOne({ _id: userId });
 
     if (!user) {
@@ -113,6 +113,7 @@ const updateUser = async (req, res) => {
     res.status(StatusCodes.OK).json(updatedUser);
   } catch (error) {
     console.log(error);
+    res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
   }
 };
 const getStripeSecret = async (req, res) => {

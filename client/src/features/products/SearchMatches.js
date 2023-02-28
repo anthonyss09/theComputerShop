@@ -11,7 +11,10 @@ export default function SearchMatches({ matches, onClick }) {
           return (
             <div key={index} onClick={onClick}>
               {" "}
-              <Link to={"/" + match._id} className="link">
+              <Link
+                to={"/products/single-product/" + match._id}
+                className="link"
+              >
                 {match.manufactuer + " " + match.model}
               </Link>
             </div>

@@ -10,6 +10,11 @@ export const alertsSlice = createSlice({
     alertMessage: "",
   },
   reducers: {
+    displayAlert: (state, action) => {
+      state.showAlert = true;
+      state.alertType = action.payload.alertType;
+      state.alertMessage = action.payload.alertMessage;
+    },
     clearAlert: (state, action) => {
       state.showAlert = false;
       state.alertType = "";
@@ -17,14 +22,14 @@ export const alertsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(
-      apiSlice.endpoints.loginUser.matchFulfilled,
-      (state, { payload }) => {
-        state.showAlert = true;
-        state.alertType = "success";
-        state.alertMessage = "Succesfully logged in user, redirecting...";
-      }
-    );
+    // builder.addMatcher(
+    //   apiSlice.endpoints.loginUser.matchFulfilled,
+    //   (state, { payload }) => {
+    //     state.showAlert = true;
+    //     state.alertType = "success";
+    //     state.alertMessage = "Succesfully logged in user, redirecting...";
+    //   }
+    // );
     builder.addMatcher(
       apiSlice.endpoints.loginUser.matchRejected,
       (state, { payload }) => {
@@ -33,16 +38,32 @@ export const alertsSlice = createSlice({
         state.alertMessage = payload.data.error;
       }
     );
-    builder.addMatcher(
-      apiSlice.endpoints.registerUser.matchFulfilled,
-      (state, { payload }) => {
-        state.showAlert = true;
-        state.alertType = "success";
-        state.alertMessage = "Succesfully registered user, redirecting...";
-      }
-    );
+    // builder.addMatcher(
+    //   apiSlice.endpoints.registerUser.matchFulfilled,
+    //   (state, { payload }) => {
+    //     state.showAlert = true;
+    //     state.alertType = "success";
+    //     state.alertMessage = "Succesfully registered user, redirecting...";
+    //   }
+    // );
     builder.addMatcher(
       apiSlice.endpoints.registerUser.matchRejected,
+      (state, { payload }) => {
+        state.showAlert = true;
+        state.alertType = "danger";
+        state.alertMessage = payload.data.error;
+      }
+    );
+    // builder.addMatcher(
+    //   apiSlice.endpoints.updateUserCart.matchFulfilled,
+    //   (state, { payload }) => {
+    //     state.showAlert = true;
+    //     state.alertType = "success";
+    //     state.alertMessage = "Item added to cart.";
+    //   }
+    // );
+    builder.addMatcher(
+      apiSlice.endpoints.updateUserCart.matchRejected,
       (state, { payload }) => {
         state.showAlert = true;
         state.alertType = "danger";
@@ -53,5 +74,5 @@ export const alertsSlice = createSlice({
 });
 
 export const selectAlertsInfo = (state) => state.alerts;
-export const { clearAlert } = alertsSlice.actions;
+export const { displayAlert, clearAlert } = alertsSlice.actions;
 export default alertsSlice.reducer;

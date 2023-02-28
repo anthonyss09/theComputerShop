@@ -50,10 +50,11 @@ export default function RegisterPage() {
         "localCart",
         JSON.stringify(response.data.user.userCart)
       );
-      setTimeout(() => {
-        dispatch(clearAlert());
-        navigate("/");
-      }, 3000);
+      navigate("/");
+      // setTimeout(() => {
+      //   dispatch(clearAlert());
+      //   navigate("/");
+      // }, 3000);
     } catch (error) {
       setTimeout(() => {
         dispatch(clearAlert());

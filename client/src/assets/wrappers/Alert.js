@@ -5,16 +5,17 @@ const Wrapper = styled.aside`
   top: 6rem;
   .danger {
     background: pink;
-    color: red;
+    // color: red;
   }
   .success {
     background: lightBlue;
-    color: blue;
   }
   .alert {
     width: 300px;
     text-align: center;
+    color: rgb(40, 40, 40);
     padding: 0.6rem;
+    font-weight: bold;
   }
 `;
 

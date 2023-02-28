@@ -1,7 +1,7 @@
 import FormLogin from "./FormLogin";
 import { useState } from "react";
 import { useLoginUserMutation } from "../api/apiSlice";
-import { useToast, Spinner } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { clearAlert, selectAlertsInfo } from "../alerts/alertsSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,6 @@ import Alert from "../alerts/Alert";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginUserMutation();
@@ -26,19 +25,6 @@ export default function LoginPage() {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    // const response = await login({ email, password });
-    // console.log(response);
-    // if (response.data) {
-    //   localStorage.setItem("user", JSON.stringify(response.data.user));
-    //   localStorage.setItem("token", JSON.stringify(response.data.token));
-    //   localStorage.setItem(
-    //     "localCart",
-    //     JSON.stringify(response.data.user.userCart)
-    //   );
-    //   navigate("/");
-    // } else {
-    //   console.log(response);
-    // }
     try {
       const response = await login({ email, password });
       localStorage.setItem("user", JSON.stringify(response.data.user));
@@ -47,10 +33,7 @@ export default function LoginPage() {
         "localCart",
         JSON.stringify(response.data.user.userCart)
       );
-      setTimeout(() => {
-        dispatch(clearAlert());
-        navigate("/");
-      }, 3000);
+      navigate("/");
     } catch (error) {}
     setTimeout(() => {
       dispatch(clearAlert());
