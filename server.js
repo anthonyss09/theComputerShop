@@ -10,8 +10,14 @@ import upload from "./utils/fileUpload.js";
 
 app.use(express.json());
 
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+
 // Accessing the path module
-const path = require("path");
+import path from "path";
 // import client build
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 // redirect requests to index.html
