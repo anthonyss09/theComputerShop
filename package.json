@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd ./client && npm run build",
-    "install-client": "cd ./client && npm install",
+    "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
@@ -28,5 +28,6 @@
     "nodemon": "^2.0.20",
     "stripe": "^11.9.1",
     "validator": "^13.7.0"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 // Accessing the path module
 import path from "path";
 // import client build
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
