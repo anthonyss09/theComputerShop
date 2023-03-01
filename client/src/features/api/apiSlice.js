@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "/api",
+    baseUrl: "https://thecomputershop.herokuapp.com/api",
     prepareHeaders: (headers, { getState }) => {
       const user = getState().auth.user;
       const token = getState().auth.token;
