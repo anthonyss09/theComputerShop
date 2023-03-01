@@ -18,15 +18,16 @@ const __filename = fileURLToPath(import.meta.url);
 import path from "path";
 // import client build
 const __dirname = path.dirname(__filename);
+
+//routes
+app.use("/api/auth", authRouter);
+app.use("/api/products", upload.single("image"), productRouter);
+
 app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
 app.get("/", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
-
-//routes
-app.use("/api/auth", authRouter);
-app.use("/api/products", upload.single("image"), productRouter);
 
 const port = process.env.PORT || 8080;
 
