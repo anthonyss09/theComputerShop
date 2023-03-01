@@ -29,5 +29,5 @@
     "stripe": "^11.9.1",
     "validator": "^13.7.0"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "https://thecomputershop.herokuapp.com"
 }
