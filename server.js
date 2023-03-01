@@ -14,11 +14,10 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 
-const __dirname = path.dirname(__filename);
-
 // Accessing the path module
 import path from "path";
 // import client build
+const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
 app.get("*", function (request, response) {
