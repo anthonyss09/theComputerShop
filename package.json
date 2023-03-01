@@ -29,5 +29,7 @@
     "stripe": "^11.9.1",
     "validator": "^13.7.0"
   },
-  "proxy": "https://thecomputershop.herokuapp.com"
+  "engines": {
+    "node": "16.x"
+  }
 }
