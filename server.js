@@ -20,7 +20,7 @@ import path from "path";
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
-app.get("*", function (request, response) {
+app.get("/", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
