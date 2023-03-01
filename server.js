@@ -26,12 +26,8 @@ app.get("*", function (request, response) {
 });
 
 //routes
-app.use("https://thecomputershop.herokuapp.com/api/auth", authRouter);
-app.use(
-  "https://thecomputershop.herokuapp.com/api/products",
-  upload.single("image"),
-  productRouter
-);
+app.use("/api/auth", authRouter);
+app.use("/api/products", upload.single("image"), productRouter);
 
 const port = process.env.PORT || 8080;
 
