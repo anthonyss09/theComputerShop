@@ -3,3 +3,9 @@
 
 #build file
 /client/build
+
+##from heroku docs
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
