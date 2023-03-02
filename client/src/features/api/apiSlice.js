@@ -32,13 +32,6 @@ export const apiSlice = createApi({
         body: { email, password },
       }),
     }),
-    // fetchUserData: builder.query({
-    //   query: () => ({
-    //     url: "/auth/fetch-user-data",
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["User"],
-    // }),
     updateUserCart: builder.mutation({
       query: ({ userId, update, add }) => ({
         url: "/auth/update-user",
