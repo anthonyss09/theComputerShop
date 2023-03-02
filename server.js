@@ -26,10 +26,10 @@ app.use("/api/products", upload.single("image"), productRouter);
 app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  response.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.REACT_APP_PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("Welcome to the computer shop.");
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
 const start = async () => {
   try {
-    await connectDb(process.env.MONGO_URL);
+    await connectDb(process.env.REACT_APP_MONGO_URL);
     app.listen(port, () => {
       console.log(`App is listening on port:${port}`);
     });

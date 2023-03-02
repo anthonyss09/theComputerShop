@@ -75,7 +75,7 @@ const updateUser = async (req, res) => {
   const token = authHeader.split(" ")[1];
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+    jwt.verify(token, process.env.REACT_APP_JWT_SECRET, (err, payload) => {
       if (err) {
         console.log(err);
         throw new BadRequestError("Invalid credentials");
