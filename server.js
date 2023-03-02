@@ -25,7 +25,7 @@ app.use("/api/products", upload.single("image"), productRouter);
 
 app.use(express.static(path.join(__dirname, "./client/build")));
 // redirect requests to index.html
-app.get("/*", function (request, response) {
+app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
