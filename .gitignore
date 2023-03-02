@@ -1,5 +1,5 @@
 #miscellaneous
-.env
+# .env
 
 #build file
 /client/build
@@ -9,4 +9,4 @@
 /client/node_modules
 npm-debug.log
 .DS_Store
-/*.env
+# /*.env
