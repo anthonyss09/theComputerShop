@@ -29,7 +29,7 @@ app.get("*", function (request, response) {
   response.sendFile(path.join(__dirname, "./client/build", "index.html"));
 });
 
-const port = process.env.REACT_APP_PORT || 8080;
+const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send("Welcome to the computer shop.");
