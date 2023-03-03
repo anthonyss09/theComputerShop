@@ -27,13 +27,14 @@ const Wrapper = styled.section`
   // }
   .preview-section {
     margin: 2rem;
+    margin-bottom: 0;
   }
 
   .sub-section {
     display: flex;
     margin: 0 2rem;
-    height: 35vh;
-    background: rgb(30, 30, 30);
+    height: 30vh;
+    // background: rgb(30, 30, 30);
   }
   .sub-text {
     letter-spacing: 0.1rem;
@@ -48,7 +49,7 @@ const Wrapper = styled.section`
   }
   .sub-image {
     border-radius: 5%;
-    height: 80%;
+    height: 65%;
     width: 90%;
     max-width: 250px;
   }

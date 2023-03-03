@@ -5,7 +5,7 @@ const Wrapper = styled.aside`
     // border-radius: 5%;
   }
   .preview-card {
-    width: 150px;
+    width: 100px;
     height: 160px;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,7 @@ const Wrapper = styled.aside`
     color: white;
     color: rgb(190, 190, 190);
     font-weight: 500;
+    text-align: center;
   }
 `;
 

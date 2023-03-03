@@ -3,11 +3,12 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   .container-main {
     position: relative;
+    margin: 0;
   }
-  .plus-circle {
-    color: rgb(190, 190, 190);
-    color: black;
-  }
+  // .plus-circle {
+  //   color: rgb(190, 190, 190);
+  //   color: black;
+  // }
   .plus-circle-container {
     display: flex;
     align-items: center;

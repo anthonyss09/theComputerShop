@@ -1,5 +1,5 @@
 #miscellaneous
-.env
+# .env
 
 #build file
 /client/build
