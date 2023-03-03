@@ -4,7 +4,6 @@ const Wrapper = styled.aside`
   position: absolute;
   // top: 6rem;
   top: 2rem;
-  left: 20%;
   .danger {
     background: pink;
     // color: red;
