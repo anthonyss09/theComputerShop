@@ -18,10 +18,12 @@ export default function CartView() {
 
   const handleCheckout = async () => {
     const response = await getStripeSecret({ cartTotal });
+
     localStorage.setItem(
       "client_secret",
       JSON.stringify(response.data.client_secret)
     );
+    localStorage.setItem("port", JSON.stringify(response.data.port));
   };
 
   const previewItems = cartItems.map((item, index) => {

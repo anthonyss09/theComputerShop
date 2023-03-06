@@ -21,6 +21,9 @@ const Wrapper = styled.aside`
     align-items: center;
     border-bottom: 1px solid rgb(60, 60, 60);
   }
+  .preview-image {
+    width: 100px;
+  }
 `;
 
 export default Wrapper;

@@ -66,7 +66,7 @@ export default function CartItemPreview({
   return (
     <Wrapper>
       <aside className="preview-card">
-        <img src={urlPre + image} />
+        <img className="preview-image" src={urlPre + image} />
         <p> {manufactuer + " " + model}</p>
         <p> {price}</p>
         <div className="counts">

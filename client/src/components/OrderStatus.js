@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { useStripe } from "@stripe/react-stripe-js";
 import { useDispatch } from "react-redux";
 import { clearClientSecret } from "../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
 
 export default function OrderStatus() {
   const stripe = useStripe();
   const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!stripe) {
@@ -17,6 +15,7 @@ export default function OrderStatus() {
 
     // Retrieve the "payment_intent_client_secret" query parameter appended to
     // your return_url by Stripe.js
+
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret"
     );
@@ -55,7 +54,7 @@ export default function OrderStatus() {
           break;
       }
     });
-  }, [stripe]);
+  }, [stripe, dispatch]);
 
   return <section className="page-height center">{message}</section>;
 }

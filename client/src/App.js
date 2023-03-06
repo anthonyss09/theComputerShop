@@ -11,7 +11,7 @@ import SingleProductPage from "./features/products/SingleProductPage";
 import CartView from "./features/cart/CartView";
 import CheckoutPage from "./pages/CheckoutPage";
 import ErrorPage from "./pages/ErrorPage";
-
+import StatusPage from "./pages/StatusPage";
 function App() {
   return (
     <Router>
@@ -34,7 +34,7 @@ function App() {
             element={<SingleProductPage />}
           />
           <Route exact path="/checkout" element={<CheckoutPage />} />
-          <Route exact path="/order/order-status" element={<CheckoutPage />} />
+          <Route exact path="/order/order-status" element={<StatusPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
