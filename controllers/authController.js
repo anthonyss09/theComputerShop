@@ -1,11 +1,7 @@
 import User from "../models/userModel.js";
 import { StatusCodes } from "http-status-codes";
 import "express-async-errors";
-import {
-  BadRequestError,
-  NotFoundError,
-  UnauthenticatedError,
-} from "../Errors/index.js";
+import { BadRequestError, UnauthenticatedError } from "../Errors/index.js";
 import jwt from "jsonwebtoken";
 import Stripe from "stripe";
 const stripe = new Stripe(
@@ -122,7 +118,7 @@ const updateUser = async (req, res) => {
 const getStripeSecret = async (req, res) => {
   const { cartTotal } = req.body;
   const total = cartTotal * 100;
-  const port = process.env.PORT || 8080;
+  // const port = process.env.PORT || 8080;
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
@@ -130,7 +126,7 @@ const getStripeSecret = async (req, res) => {
       currency: "usd",
       automatic_payment_methods: { enabled: true },
     });
-    res.json({ client_secret: paymentIntent.client_secret, port: port });
+    res.json({ client_secret: paymentIntent.client_secret });
   } catch (error) {
     console.log(error);
   }

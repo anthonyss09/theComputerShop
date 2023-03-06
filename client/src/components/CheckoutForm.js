@@ -13,7 +13,7 @@ export default function ChekcoutForm() {
 
   const port = useSelector(selectPort);
 
-  const returnUrl = "http://localhost:" + port + "/order/order-status";
+  const returnUrl = "https://thecomputershop.herokuapp.com/order/order-status";
 
   const [errorMessage, setErrorMessage] = useState(null);
 

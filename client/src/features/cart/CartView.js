@@ -23,7 +23,7 @@ export default function CartView() {
       "client_secret",
       JSON.stringify(response.data.client_secret)
     );
-    localStorage.setItem("port", JSON.stringify(response.data.port));
+    // localStorage.setItem("port", JSON.stringify(response.data.port));
   };
 
   const previewItems = cartItems.map((item, index) => {

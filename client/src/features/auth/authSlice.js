@@ -50,7 +50,7 @@ export const authSlice = createSlice({
       apiSlice.endpoints.getStripeSecret.matchFulfilled,
       (state, { payload }) => {
         state.client_secret = payload.client_secret;
-        state.port = payload.port;
+        // state.port = payload.port;
         window.location.href = "/checkout";
       }
     );
@@ -59,6 +59,6 @@ export const authSlice = createSlice({
 
 export const selectCurrentUser = (state) => state.auth.user;
 export const selectClientSecret = (state) => state.auth.client_secret;
-export const selectPort = (state) => state.auth.port;
+// export const selectPort = (state) => state.auth.port;
 export const { logoutUser, clearClientSecret } = authSlice.actions;
 export default authSlice.reducer;
