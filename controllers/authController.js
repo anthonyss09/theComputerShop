@@ -7,9 +7,8 @@ import Stripe from "stripe";
 const stripe = new Stripe(
   "sk_test_51LuIXnA3543f5hOkxXS8ewm1AlEMJzEqt4MHBGrV3je1IfiFwiixpp94FqHW5SHOatZri2sboL9JFk6AamlBTw7H00cX6LsqY8"
 );
-import dotenv from "dotenv";
-dotenv.config();
-// const stripe = new Stripe(process.env.STRIPE_KEY);
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const registerUser = async (req, res) => {
   const { firstName, lastName, email, password, admin, userCart } = req.body;

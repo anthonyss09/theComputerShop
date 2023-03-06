@@ -4,14 +4,14 @@ import {
   PaymentElement,
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectPort } from "../features/auth/authSlice";
+// import { useSelector } from "react-redux";
+// import { selectPort } from "../features/auth/authSlice";
 
 export default function ChekcoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const port = useSelector(selectPort);
+  // const port = useSelector(selectPort);
 
   const returnUrl = "https://thecomputershop.herokuapp.com/order/order-status";
 
