@@ -25,7 +25,6 @@ export default function AddProductPage() {
     setType(e.target.value);
   };
   const handleImageChange = (e) => {
-    // console.log(e.target.files[0]);
     setImage(e.target.files[0]);
   };
   const handleSubmit = async (e) => {

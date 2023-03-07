@@ -47,6 +47,13 @@ export const apiSlice = createApi({
         body: total,
       }),
     }),
+    transferCartToOrdered: builder.mutation({
+      query: ({ userId, cart }) => ({
+        url: "/auth/v1/transfer-cart",
+        method: "POST",
+        body: { userId, cart },
+      }),
+    }),
   }),
 });
 
@@ -54,4 +61,5 @@ export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useUpdateUserCartMutation,
+  useTransferCartToOrderedMutation,
 } = apiSlice;

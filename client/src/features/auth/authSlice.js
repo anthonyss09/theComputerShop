@@ -4,13 +4,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const currentUser = JSON.parse(localStorage.getItem("user")) || null;
 const token = JSON.parse(localStorage.getItem("token")) || null;
 const client_secret = JSON.parse(localStorage.getItem("client_secret"));
-const port = JSON.parse(localStorage.getItem("port")) || null;
+// const port = JSON.parse(localStorage.getItem("port")) || null;
 
 const initialState = {
   user: currentUser,
   token: token,
   client_secret: client_secret,
-  port: port,
+  // port: port,
 };
 
 export const authSlice = createSlice({

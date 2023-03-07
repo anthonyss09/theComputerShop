@@ -59,6 +59,9 @@ const Wrapper = styled.section`
     display: grid;
     place-items: center;
   }
+  .desktops-row {
+    margin-bottom: 3rem;
+  }
 
   @media (min-width: 760px) {
     .image-container {

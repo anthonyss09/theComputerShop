@@ -116,7 +116,7 @@ const updateUser = async (req, res) => {
 };
 const getStripeSecret = async (req, res) => {
   const { cartTotal } = req.body;
-  const total = cartTotal * 100;
+  const total = (cartTotal * 100).toFixed(0);
   // const port = process.env.PORT || 8080;
 
   try {
@@ -131,4 +131,27 @@ const getStripeSecret = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser, updateUser, getStripeSecret };
+const transferCartToOrdered = async (req, res) => {
+  const { cart, userId } = req.body;
+
+  try {
+    const user = await User.findOne({ _id: userId });
+    const userProducts = user.orderedProducts;
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $set: { userCart: [], orderedProducts: userProducts.concat(cart) } }
+    );
+
+    res.status(StatusCodes.OK).json(updatedUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  registerUser,
+  loginUser,
+  updateUser,
+  getStripeSecret,
+  transferCartToOrdered,
+};

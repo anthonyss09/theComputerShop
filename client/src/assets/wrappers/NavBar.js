@@ -8,10 +8,16 @@ const Wrapper = styled.nav`
     padding: 0.2rem;
     background: lightBlue;
     border-radius: 50%;
-    z-index: 1;
-    top: 0.9rem;
-    right: 0.8rem;
     color: black;
+    top: -0.2rem;
+    left: 0.8rem;
+  }
+  .cart-link {
+    position: relative;
+  }
+  .drop-item {
+    padding: 1rem;
+    padding-left: 0;
   }
   .drop-item:hover {
     cursor: pointer;
@@ -37,10 +43,6 @@ const Wrapper = styled.nav`
   }
   .icon {
     color: white;
-  }
-  .icon-shopping-bag {
-    position: relative;
-    z-index: 6;
   }
   .icon:hover {
     cursor: pointer;

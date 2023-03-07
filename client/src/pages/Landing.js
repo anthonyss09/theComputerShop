@@ -46,7 +46,7 @@ export default function Landing() {
           <img src={psController} alt="ps controller" className="sub-image" />
         </div>
       </section>
-      <section className="preview-section">
+      <section className="preview-section desktops-row">
         <ProductRow products={desktops} title="Desktops" />
       </section>
     </Wrapper>

@@ -44,6 +44,7 @@ export default function NavBar() {
     localStorage.removeItem("token");
     localStorage.removeItem("localCart");
     navigate("/");
+    handleUserClick();
   };
   const handleSearch = async (e) => {
     const searchQuery = e.target.value;
@@ -56,19 +57,13 @@ export default function NavBar() {
   let content;
   if (user) {
     content = (
-      <div
-        className="drop-item"
-        onClick={() => {
-          handleLogout();
-          handleUserClick();
-        }}
-      >
+      <div className="drop-item" onClick={handleLogout}>
         Logout
       </div>
     );
   } else {
     content = (
-      <Link className="link" to="/register" onClick={handleUserClick}>
+      <Link className="link drop-item" to="/register" onClick={handleUserClick}>
         Register
       </Link>
     );
@@ -119,7 +114,7 @@ export default function NavBar() {
               onClick={handleUserClick}
             />
             {showLoginOut && <div className="drop-menu">{content}</div>}
-            <Link to="/cart">
+            <Link className="cart-link" to="/cart">
               {" "}
               <div className="cart-count">{cartCount}</div>
               <div className="icon-shopping-bag">

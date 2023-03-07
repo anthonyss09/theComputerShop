@@ -1,6 +1,5 @@
-import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { apiSlice } from "../api/apiSlice";
-import { useDispatch } from "react-redux";
 
 export const alertsSlice = createSlice({
   name: "alerts",
@@ -22,14 +21,6 @@ export const alertsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder.addMatcher(
-    //   apiSlice.endpoints.loginUser.matchFulfilled,
-    //   (state, { payload }) => {
-    //     state.showAlert = true;
-    //     state.alertType = "success";
-    //     state.alertMessage = "Succesfully logged in user, redirecting...";
-    //   }
-    // );
     builder.addMatcher(
       apiSlice.endpoints.loginUser.matchRejected,
       (state, { payload }) => {
@@ -38,14 +29,6 @@ export const alertsSlice = createSlice({
         state.alertMessage = payload.data.error;
       }
     );
-    // builder.addMatcher(
-    //   apiSlice.endpoints.registerUser.matchFulfilled,
-    //   (state, { payload }) => {
-    //     state.showAlert = true;
-    //     state.alertType = "success";
-    //     state.alertMessage = "Succesfully registered user, redirecting...";
-    //   }
-    // );
     builder.addMatcher(
       apiSlice.endpoints.registerUser.matchRejected,
       (state, { payload }) => {

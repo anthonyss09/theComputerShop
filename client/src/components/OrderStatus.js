@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { useStripe } from "@stripe/react-stripe-js";
-import { useDispatch } from "react-redux";
-import { clearClientSecret } from "../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../features/cart/cartSlice";
+import { selectCurrentUser } from "../features/auth/authSlice";
+import { useTransferCartToOrderedMutation } from "../features/api/apiSlice";
 
 export default function OrderStatus() {
   const stripe = useStripe();
   const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
+  const user = useSelector(selectCurrentUser);
+  const [transferCartToOrdered] = useTransferCartToOrderedMutation();
 
   useEffect(() => {
     if (!stripe) {
@@ -29,12 +33,27 @@ export default function OrderStatus() {
       // confirmation, while others will first enter a `processing` state.
       //
       // [0]: https://stripe.com/docs/payments/payment-methods#payment-notification
-      dispatch(clearClientSecret);
+
       localStorage.removeItem("client_secret");
-      localStorage.removeItem("localCart");
+
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Success! Payment received.");
+          localStorage.removeItem("localCart");
+          dispatch(clearCart());
+          if (user) {
+            transferCartToOrdered({
+              userId: user._id,
+              cart: user.userCart,
+            }).then(() => {
+              const userPlace = JSON.parse(localStorage.getItem("user"));
+              userPlace.userCart = [];
+              userPlace.orderedProducts = userPlace.orderedProducts.concat(
+                user.userCart
+              );
+              localStorage.setItem("user", JSON.stringify(userPlace));
+            });
+          }
           break;
 
         case "processing":

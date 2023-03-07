@@ -51,10 +51,6 @@ export default function RegisterPage() {
         JSON.stringify(response.data.user.userCart)
       );
       navigate("/");
-      // setTimeout(() => {
-      //   dispatch(clearAlert());
-      //   navigate("/");
-      // }, 3000);
     } catch (error) {
       setTimeout(() => {
         dispatch(clearAlert());
